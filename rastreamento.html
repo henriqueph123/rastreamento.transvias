@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreamento de Encomendas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #tracking-form {
+            max-width: 400px;
+            margin: 20px 0;
+        }
+
+        #tracking-number {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Rastreamento de Encomendas</h1>
+
+<div id="tracking-form">
+    <label for="tracking-number">Número de Rastreamento:</label>
+    <input type="text" id="tracking-number" placeholder="Insira o número de rastreamento">
+
+    <button id="submit-btn" onclick="trackPackage()">Rastrear Encomenda</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+    function trackPackage() {
+        const trackingNumber = document.getElementById('tracking-number').value;
+        const resultDiv = document.getElementById('result');
+
+        // Número de rastreamento específico para este exemplo
+        const validTrackingNumber = "QDS497521796DB";
+
+        if (trackingNumber.trim() === '') {
+            resultDiv.innerHTML = 'Por favor, insira um número de rastreamento válido.';
+        } else if (trackingNumber === validTrackingNumber) {
+            resultDiv.innerHTML = `A encomenda está a caminho. Status: Em trânsito.`;
+        } else {
+            resultDiv.innerHTML = `A encomenda ${trackingNumber} não foi encontrada. Verifique o número de rastreamento.`;
+        }
+    }
+</script>
+
+</body>
+</html>
